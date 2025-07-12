@@ -66,12 +66,17 @@ export default function ImportModal({ open, onOpenChange }: ImportModalProps) {
         const newProjectId = projectIdMap.get(item.projectId);
         if (newProjectId) {
           await createItem.mutateAsync({
-            ...item,
+            type: item.type,
+            name: item.name,
             projectId: newProjectId,
+            source: item.source ?? null,
+            metadata: item.metadata,
+            description: item.description ?? null,
+            tags: item.tags ?? [],
+            thumbnail: item.thumbnail ?? null
           });
         }
       }
-      
       toast({
         title: "Success",
         description: `Successfully imported ${importData.projects.length} projects and ${importData.items.length} items`,
