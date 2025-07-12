@@ -17,6 +17,11 @@ try {
   fs.copyFileSync('electron/main.js', 'dist-desktop/electron/main.js');
 
   // Step 3: Copy backend folders (skip frontend for now)
+  console.log("🔧 Compiling server TypeScript to JavaScript...");
+  execSync('npx tsc', {
+    stdio: 'inherit',
+    cwd: './server'
+  });
   fs.cpSync('server', 'dist-desktop/server', { recursive: true });
   fs.cpSync('shared', 'dist-desktop/shared', { recursive: true });
 
@@ -33,7 +38,8 @@ try {
     },
     devDependencies: {
       "electron": "^26.2.0",
-      "electron-builder": "^26.0.12"
+      "electron-builder": "^26.0.12",
+      "typescript": "^5.4.0"
     }  
   };
   fs.writeFileSync('dist-desktop/package.json', JSON.stringify(packageJson, null, 2));
