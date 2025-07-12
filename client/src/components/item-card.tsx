@@ -44,6 +44,7 @@ export default function ItemCard({ item, onEdit }: ItemCardProps) {
   const deleteItem = useDeleteItem();
 
   const config = itemTypeConfig[item.type as ItemType];
+  const metadata = item.metadata as { size?: string };
   const IconComponent = config.icon;
 
   const handleDelete = async () => {
@@ -197,9 +198,7 @@ export default function ItemCard({ item, onEdit }: ItemCardProps) {
         <div className="mt-3 pt-3 border-t border-slate-100">
           <p className="text-xs text-slate-500">
             Modified: {format(new Date(item.updatedAt), "MMM d, yyyy")}
-            {item.metadata?.size && (
-              <span> • {item.metadata.size}</span>
-            )}
+            {metadata.size && <span> • {metadata.size}</span>}
           </p>
         </div>
       </CardContent>
