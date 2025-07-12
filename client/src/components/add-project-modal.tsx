@@ -96,6 +96,7 @@ export default function AddProjectModal({ open, onOpenChange }: AddProjectModalP
                       placeholder="Project description (optional)"
                       className="resize-none"
                       {...field}
+                      value={field.value ?? ""}
                     />
                   </FormControl>
                   <FormMessage />
