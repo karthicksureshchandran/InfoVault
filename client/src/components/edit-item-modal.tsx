@@ -176,6 +176,7 @@ export default function EditItemModal({ open, onOpenChange, item }: EditItemModa
                     <Input
                       placeholder="Enter URL or file path"
                       {...field}
+                      value={field.value ?? ""}
                     />
                   </FormControl>
                   <FormMessage />
@@ -192,7 +193,11 @@ export default function EditItemModal({ open, onOpenChange, item }: EditItemModa
                     <Input
                       placeholder="Enter tags separated by commas"
                       {...field}
-                      value={Array.isArray(field.value) ? field.value.join(", ") : field.value}
+                      value={
+                        Array.isArray(field.value)
+                          ? field.value.join(", ")
+                          : field.value ?? ""
+                      }
                     />
                   </FormControl>
                   <FormMessage />
