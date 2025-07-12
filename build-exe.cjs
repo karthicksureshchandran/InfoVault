@@ -19,8 +19,7 @@ try {
   // Step 3: Copy backend folders (skip frontend for now)
   console.log("🔧 Compiling server TypeScript to JavaScript...");
   execSync('npx tsc', {
-    stdio: 'inherit',
-    cwd: './server'
+    stdio: 'inherit'
   });
   fs.cpSync('server', 'dist-desktop/server', { recursive: true });
   fs.cpSync('shared', 'dist-desktop/shared', { recursive: true });
