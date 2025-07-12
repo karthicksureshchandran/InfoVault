@@ -24,10 +24,13 @@ try {
   const packageJson = {
     name: "infovault-desktop",
     version: "1.0.0",
+    description: "InfoVault Desktop App",
+    author: "InfoVault",
     main: "electron/main.js",
     dependencies: {
       "better-sqlite3": "^11.8.0",
       "express": "^4.21.2"
+      "electron": "^26.2.0"
     }
   };
   fs.writeFileSync('dist-desktop/package.json', JSON.stringify(packageJson, null, 2));
