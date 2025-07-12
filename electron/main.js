@@ -9,11 +9,12 @@ let serverProcess;
 // Start the Express server
 function startServer() {
   return new Promise((resolve, reject) => {
-    const serverPath = path.join(__dirname, '../server/index.ts');
-    serverProcess = spawn('npx', ['tsx', serverPath], {
+    const serverPath = path.join(__dirname, '../server/index.js');
+    serverProcess = spawn(process.execPath, [serverPath], {
       env: { ...process.env, NODE_ENV: 'production' },
       stdio: 'pipe'
     });
+
 
     serverProcess.stdout.on('data', (data) => {
       console.log(`Server: ${data}`);
