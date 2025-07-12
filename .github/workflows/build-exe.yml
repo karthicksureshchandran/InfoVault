@@ -28,7 +28,7 @@ jobs:
           npm run build
           
       - name: Show files in workspace
-        run: ls -la
+        run: Get-ChildItem -Recurse -Force
 
       - name: Package Electron App
         run: node build-exe.cjs
