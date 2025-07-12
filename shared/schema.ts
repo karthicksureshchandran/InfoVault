@@ -46,6 +46,14 @@ export type UpdateItem = z.infer<typeof updateItemSchema>;
 export type Project = typeof projects.$inferSelect;
 export type Item = typeof items.$inferSelect;
 
+export type Json =
+  | string
+  | number
+  | boolean
+  | null
+  | { [key: string]: Json }
+  | Json[];
+
 export const ItemTypeEnum = z.enum([
   "url",
   "image", 
