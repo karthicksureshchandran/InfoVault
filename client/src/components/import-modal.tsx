@@ -13,6 +13,7 @@ import { useCreateProject } from "@/hooks/use-projects";
 import { useCreateItem } from "@/hooks/use-items";
 import { parseImportData } from "@/lib/export-utils";
 import { Upload } from "lucide-react";
+import type { Json } from "@shared/schema";
 
 interface ImportModalProps {
   open: boolean;
@@ -70,7 +71,7 @@ export default function ImportModal({ open, onOpenChange }: ImportModalProps) {
             name: item.name,
             projectId: newProjectId,
             source: item.source ?? null,
-            metadata: item.metadata,
+            metadata: item.metadata as Json,
             description: item.description ?? null,
             tags: item.tags ?? [],
             thumbnail: item.thumbnail ?? null
