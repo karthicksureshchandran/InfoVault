@@ -26,6 +26,9 @@ jobs:
         run: |
           npm install
           npm run build
+          
+      - name: Show files in workspace
+        run: ls -la
 
       - name: Package Electron App
         run: node build-exe.cjs
