@@ -160,6 +160,7 @@ export default function EditItemModal({ open, onOpenChange, item }: EditItemModa
                       placeholder="What is this item about?"
                       className="resize-none"
                       {...field}
+                      value={field.value ?? ""}
                     />
                   </FormControl>
                   <FormMessage />
