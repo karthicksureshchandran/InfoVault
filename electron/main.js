@@ -63,14 +63,13 @@ function createWindow() {
     mainWindow.loadURL('http://localhost:5000');
   } else {
     // In production, serve static files
-    const staticPath = path.join(__dirname, '../resources/dist/index.html');
+    const staticPath = path.join(__dirname, '../client/dist/index.html');
     if (fs.existsSync(staticPath)) {
       mainWindow.loadFile(staticPath);
     } else {
-      mainWindow.loadURL('http://localhost:5000');
+      console.error("❌ Built frontend not found. Please run 'npm run build' in the /client folder.");
     }
   }
-
   mainWindow.once('ready-to-show', () => {
     mainWindow.show();
   });
@@ -254,7 +253,7 @@ app.on('window-all-closed', () => {
 });
 
 app.on('activate', () => {
-  if (BrowserWindow.getAllWindows().length === 0) {
+  if (process.platform === 'darwin' && BrowserWindow.getAllWindows().length === 0) {
     createWindow();
   }
 });
